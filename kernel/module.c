@@ -3600,6 +3600,11 @@ static char *custom_module_blacklist[] = {
 #if IS_BUILTIN(CONFIG_FINGERPRINT_GOODIX_FOD)
 	"goodix_fp",
 #endif
+#if IS_ENABLED(CONFIG_CORESIGHT_PLACEHOLDER) || IS_ENABLED(CONFIG_CORESIGHT_AMBA_PLACEHOLDER)
+    "coresight", "coresight_csr", "coresight_cti", "coresight_dummy", "coresight_funnel",
+    "coresight_hwevent", "coresight_remote_etm", "coresight_replicator", "coresight_stm",
+    "coresight_tgu", "coresight_tmc", "coresight_tpda", "coresight_tpdm",
+#endif
 	"cpufreq_ondemand",
 	"cpufreq_userspace"
 };
