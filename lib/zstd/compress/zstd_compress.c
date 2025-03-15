@@ -5968,6 +5968,7 @@ size_t ZSTD_initCStream(ZSTD_CStream* zcs, int compressionLevel)
     FORWARD_IF_ERROR( ZSTD_CCtx_setParameter(zcs, ZSTD_c_compressionLevel, compressionLevel) , "");
     return 0;
 }
+EXPORT_SYMBOL(ZSTD_initCStream);
 
 /*======   Compression   ======*/
 
@@ -6183,6 +6184,7 @@ size_t ZSTD_compressStream(ZSTD_CStream* zcs, ZSTD_outBuffer* output, ZSTD_inBuf
     FORWARD_IF_ERROR( ZSTD_compressStream2(zcs, output, input, ZSTD_e_continue) , "");
     return ZSTD_nextInputSizeHint_MTorST(zcs);
 }
+EXPORT_SYMBOL(ZSTD_compressStream);
 
 /* After a compression call set the expected input/output buffer.
  * This is validated at the start of the next compression call.
@@ -7456,12 +7458,15 @@ size_t ZSTD_endStream(ZSTD_CStream* zcs, ZSTD_outBuffer* output)
         return toFlush;
     }
 }
+EXPORT_SYMBOL(ZSTD_endStream);
 
 
 /*-=====  Pre-defined compression levels  =====-*/
 #include "clevels.h"
 
 int ZSTD_maxCLevel(void) { return ZSTD_MAX_CLEVEL; }
+EXPORT_SYMBOL(ZSTD_maxCLevel);
+
 int ZSTD_minCLevel(void) { return (int)-ZSTD_TARGETLENGTH_MAX; }
 int ZSTD_defaultCLevel(void) { return ZSTD_CLEVEL_DEFAULT; }
 
@@ -7606,6 +7611,7 @@ ZSTD_parameters ZSTD_getParams(int compressionLevel, unsigned long long srcSizeH
     if (srcSizeHint == 0) srcSizeHint = ZSTD_CONTENTSIZE_UNKNOWN;
     return ZSTD_getParams_internal(compressionLevel, srcSizeHint, dictSize, ZSTD_cpm_unknown);
 }
+EXPORT_SYMBOL(ZSTD_getParams);
 
 void ZSTD_registerSequenceProducer(
     ZSTD_CCtx* zc,
