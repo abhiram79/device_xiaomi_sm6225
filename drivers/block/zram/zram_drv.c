@@ -1002,6 +1002,12 @@ static ssize_t comp_algorithm_store(struct device *dev,
 	char compressor[ARRAY_SIZE(zram->compressor)];
 	size_t sz;
 
+	#ifdef CONFIG_ZRAM_COMP_RESTRICT_INIT
+	if (!strncmp(current->comm, "init", sizeof("init")) ||
+		!strncmp(current->comm, "init.qcom.post_", sizeof("init.qcom.post_")))
+		return len;
+	#endif
+
 	strlcpy(compressor, buf, sizeof(compressor));
 	/* ignore trailing newline */
 	sz = strlen(compressor);

@@ -45,6 +45,15 @@ config ZRAM_DEF_COMP_842
 
 endchoice
 
+config ZRAM_COMP_RESTRICT_INIT
+	bool "Restrict init from setting a compression algorithm"
+	depends on ZRAM
+	help
+		This is a hack for restricting init from setting a ZRAM compression algorithm
+
+		This is so we can use different ZRAM compression algorithm without it being
+		overriden after boot completes. 
+
 config ZRAM_DEF_COMP
 	string
 	default "lzo-rle" if ZRAM_DEF_COMP_LZORLE
