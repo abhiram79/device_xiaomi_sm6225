@@ -6,6 +6,10 @@
 # Configuration path
 DEFCONFIG_PATH=${ROOT_DIR}/${KERNEL_DIR}/arch/arm64/configs
 
+BUILD_SYSTEM_DLKM=0
+BUILD_GKI_ARTIFACTS=0
+BUILD_GKI_CERTIFICATION_TOOLS=0
+
 DEFCONFIG=chickernel_defconfig
 FRAGMENT_CONFIG=${DEFCONFIG_PATH}/chickernel-variants/ksu.config
 
