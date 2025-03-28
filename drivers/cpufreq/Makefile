@@ -22,6 +22,7 @@ obj-$(CONFIG_CPUFREQ_DT_PLATDEV)	+= cpufreq-dt-platdev.o
 
 obj-$(CONFIG_CPUFREQ_DUMMY)		+= dummy-cpufreq.o
 obj-$(CONFIG_CPUFREQ_VM)		+= vm-cpufreq.o
+obj-$(CONFIG_CPUFREQ_PSM) 		+= power_saving_mode.o
 
 ##################################################################################
 # x86 drivers.

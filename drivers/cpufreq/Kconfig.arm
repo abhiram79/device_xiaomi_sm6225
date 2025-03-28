@@ -3,6 +3,36 @@
 # ARM CPU Frequency scaling drivers
 #
 
+config CPUFREQ_PSM
+	tristate "Power-saving mode"
+	depends on GENERIC_ARCH_TOPOLOGY
+	depends on CPU_IDLE
+	depends on POWER_SUPPLY 	
+	help 
+	  This driver monitors battery status and applies power-saving measures
+	  when battery level falls below a threshold. 
+	  
+	  When triggered, it switches all clusters to power-saving governors and 
+	  throttles maximum CPU frequencies by 50%.
+	  
+	  If the battery level gets above the threshold, or the device strts 
+	  charging, the driver will revert it's changes.
+
+	  This might be useful for getting the most out of your battery in 
+	  critical battery levels.
+
+	  This driver can be adjusted, and toggled via sysfs.
+
+config CPUFREQ_PSM_THRESHOLD
+	int "Low battery level threshold"
+	default 5
+	depends on CPUFREQ_PSM
+
+config CPUFREQ_PSM_GOVERNOR
+	string "Power-saving governor to switch to after threshold is reached"
+	default "conservative"
+	depends on CPUFREQ_PSM
+
 config ACPI_CPPC_CPUFREQ
 	tristate "CPUFreq driver based on the ACPI CPPC spec"
 	depends on ACPI_PROCESSOR
