@@ -106,7 +106,7 @@ static void extend_surfacefinger_binder_set_priority_handler(
 	// Determine whether the current task meets the status
 	if (set_binder_rt_task(t)) {
 		desired.sched_policy = SCHED_FIFO;
-		desired.prio = 98;
+		desired.prio = 80;
 		policy = desired.sched_policy;
 	}
 
@@ -131,7 +131,7 @@ static void extend_surfacefinger_binder_trans_handler(
 		if (thread && proc && tr && thread->transaction_stack &&
 		    (!(thread->transaction_stack->flags & TF_ONE_WAY))) {
 			target_proc->default_priority.sched_policy = SCHED_FIFO;
-			target_proc->default_priority.prio = 98;
+			target_proc->default_priority.prio = 85;
 		}
 	}
 }
