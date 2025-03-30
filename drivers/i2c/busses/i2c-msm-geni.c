@@ -801,27 +801,6 @@ static void geni_i2c_irq_handle_watermark(struct geni_i2c_dev *gi2c, u32 m_stat)
  * Return: None
  */
 
-static void geni_i2c_check_addr_data_nack(struct geni_i2c_dev *gi2c,
-					  __u16 flags)
-{
-	if (readl_relaxed(gi2c->base + SE_GENI_M_GP_LENGTH)) {
-		/* only process for write operation. */
-		if (!(flags & I2C_M_RD))
-			geni_i2c_err(gi2c, I2C_DATA_NACK);
-	} else {
-		geni_i2c_err(gi2c, I2C_ADDR_NACK);
-	}
-}
-
-/*
- * geni_i2c_check_addr_data_nack() - checks whether it is Address Nack or Data Nack
- *
- * @gi2c: I2C device handle
- * @flags: gi2c cur flags
- *
- * Return: None
- */
-
 static void geni_i2c_check_addr_data_nack(struct geni_i2c_dev *gi2c, __u16 flags)
 {
 	if (readl_relaxed(gi2c->base + SE_GENI_M_GP_LENGTH)) {
