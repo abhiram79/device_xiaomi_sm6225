@@ -787,6 +787,7 @@ int profile_event_register(enum profile_type t, struct notifier_block *n)
 
 	return -ENOSYS;
 }
+EXPORT_SYMBOL_GPL(profile_event_register);
 
 int profile_event_unregister(enum profile_type t, struct notifier_block *n)
 {
@@ -796,6 +797,7 @@ int profile_event_unregister(enum profile_type t, struct notifier_block *n)
 
 	return -ENOSYS;
 }
+EXPORT_SYMBOL_GPL(profile_event_unregister); 
 
 void profile_task_exit(struct task_struct *tsk)
 {
