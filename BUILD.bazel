@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2021 The Android Open Source Project
 
+load("//build/kernel/kleaf:kernel.bzl", "kernel_build")
 load("//build/kernel/kleaf:common_kernels.bzl", "define_common_kernels", "define_db845c")
 load("//build/kernel/kleaf:constants.bzl", "aarch64_gz_outs")
 
@@ -239,5 +240,29 @@ define_db845c(
         "sound/soc/qcom/snd-soc-qcom-common.ko",
         "sound/soc/qcom/snd-soc-sdm845.ko",
         "sound/soc/qcom/snd-soc-sm8250.ko",
+    ],
+)
+
+kernel_build(
+    name = "chickernel",
+    build_config = "build.config.gki.aarch64.chickernel",
+    outs = [
+        "Image",
+    ],
+)
+
+kernel_build(
+    name = "chickernel_ksu",
+    build_config = "build.config.gki.aarch64.chickernel.ksu",
+    outs = [
+        "Image",
+    ],
+)
+
+kernel_build(
+    name = "chickernel_ksu_susfs",
+    build_config = "build.config.gki.aarch64.chickernel.ksu.susfs",
+    outs = [
+        "Image",
     ],
 )
