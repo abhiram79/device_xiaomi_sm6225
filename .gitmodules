@@ -1,5 +1,5 @@
-[submodule "KernelSU-Next"]
+[submodule "KSUN"]
 	path = KernelSU-Next
-	url = https://github.com/rifsxd/KernelSU-Next
-	branch = next-susfs
-	shallow = true
+	url = https://github.com/chickendrop89/KernelSU-Next
+    branch = next-susfs
+    shallow = true
